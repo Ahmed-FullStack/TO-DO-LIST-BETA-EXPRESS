@@ -1,0 +1,17 @@
+
+<%- include('partials/header') -%>
+<h2><%= listName %></h2>
+<div>
+<% listItems.forEach(item => { %>
+<form method="post" action="/delete">
+	<p><%= item.itemName %></p>
+	<input type="checkbox" name="idOfItems" value=<%=item._id%>  onChange="this.form.submit()"/>
+	<input type="hidden" name="listTitle" value=<%= listName %> />
+</form>
+<% }); %>
+</div>
+<form action="/add" method="post">
+	<input type="text" name="input" required/>
+	<button name="listName" value=<%= listName %>>Add List</button>
+</form>
+<%- include('partials/footer') -%>
